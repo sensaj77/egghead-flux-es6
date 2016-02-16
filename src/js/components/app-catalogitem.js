@@ -4,13 +4,19 @@ import CartButton from './app-cart-button';
 import ColorButton from './app-color-button';
 
 
+/*"since our StoreWatchMixin keeps track of the state of our catalog component " */
+
 export default (props) => {
 	return (
 		<div className="col-xs-6 col-sm-4 col-md-3">
 			<h4>{ props.item.title } </h4>
 			<img src="http://placehold.it/250x250" width="100%" className="img-responsive" />
 			<p> {props.item.summary } </p>
-			<p> $ { props.item.cost } </p>
+			<p> $ { props.item.cost }
+				<span className="text-success">
+					{props.item.qty && `(${props.item.qty} in cart)`}
+				</span>
+			 </p>
 			<CartButton handler={ AppActions.addItem.bind(null, props.item) } txt="Add To Cart" />
 
 			<ColorButton colorHandler={ AppActions.colorItem.bind(null, props.item) } txtToColor="Color Cart" />

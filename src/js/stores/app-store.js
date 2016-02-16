@@ -41,7 +41,6 @@ as name may suggest it will be cartItems simply
 
 var _cartItems = [];
 
-console.log(_cartItems );
 /*findIndex or find or both are es6 array method*/
 
 /*My try to create custom method to color some elements, let's try maybe do this in most simple way using js then send it trough flux...*/
@@ -50,7 +49,7 @@ console.log(_cartItems );
 
 
 const _removeItem = ( item ) => {
-	console.log("first remove console.log " + _cartItems );
+	/*console.log("first remove console.log " + _cartItems );*/
 
 	/*nothing calls this method so until it is called there will be no console log*/
 
@@ -58,7 +57,7 @@ const _removeItem = ( item ) => {
 };
 
 const _findCartItem = ( item ) => {
-	console.log("second _findCartItem console.log " + _cartItems );
+	/*console.log("second _findCartItem console.log " + _cartItems );*/
 
 	return _cartItems.find( cartItem => cartItem.id === item.id );
 };
@@ -75,7 +74,7 @@ const _decreaseItem = ( item ) => {
 const _addItem = ( item ) => {
 	const cartItem = _findCartItem ( item );
 	if ( !cartItem ) {
-		console.log("third console.log _addItem " + _cartItems );
+		/*console.log("third console.log _addItem " + _cartItems );*/
 
 		_cartItems.push ( Object.assign( { qty: 1 }, item ) );
 	} else {
@@ -85,7 +84,7 @@ const _addItem = ( item ) => {
 
 const _cartTotals = (qty = 0, total = 0 ) => {
 
-	console.log("4 _cartTotals counting console.log " + _cartItems );
+	/*console.log("4 _cartTotals counting console.log " + _cartItems );*/
 
 	_cartItems.forEach( cartItem => {
 		qty += cartItem.qty;
@@ -95,9 +94,10 @@ const _cartTotals = (qty = 0, total = 0 ) => {
 };
 
 const AppStore = Object.assign(EventEmitter.prototype, { 
+
 	emitChange(){
 
-		console.log("fifth at AppStore const console.log " + _cartItems );
+		/*console.log("fifth at AppStore const console.log " + _cartItems );*/
 
 		this.emit( CHANGE_EVENT )
 	},
