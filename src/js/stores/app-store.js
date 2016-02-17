@@ -5,15 +5,20 @@ import AppConstants from '../constants/app-constants';
 import { EventEmitter } from 'events';
 
 
-//value = change will be broadcasted every time smth changes in our app
+
+/*value = change will be broadcasted every time smth changes in our app
+*/
 const CHANGE_EVENT = 'change';
 
 var _catalog = [];
 
-/*AHA! Ta pętla się odpali chyba po npm start i byc moze
-nawet inne funkcje tez. Ta konkretna stworzy 9 widgetów
-One sie nie pojawia na widoku, tylko będą istniec w _catalog
-Dzieki metodzie push . Kazdy bedzie mial 5 properties:
+var _myCatalog = [];
+
+/*AHA! This loop will be trigerred maybe when npm start in console, this particular loop
+will create 9 objects, 9 widgets. They will be not seen until used somwhere else, when catalog will
+be mapped and later result of mapping will be rendered to the view.
+With push method those widgets created are being send to _catalog array.
+Each widget will have 5 properties(keys) with values:
 1) id np. Widget1
 2) title Widget #1, Widget #2
 3)summary the same for every widget
@@ -24,6 +29,8 @@ second widget = 2usd etc.
 LATER WE WILL WORK WITH THOS CREATED WIDGETS WITH ALL THEIR PROPS
 THEY ARE OBJECTS, LIKE EVERYTHING IN JS, HELD IN ARRAY - catalog
 */
+
+
 
 for (let i = 1; i < 9; i++) {
 	_catalog.push( {
@@ -36,12 +43,26 @@ for (let i = 1; i < 9; i++) {
 	});
 }
 
+for (let i = 1; i < 3; i++) {
+	_myCatalog.push( {
+		'id': 'Circle' + i,
+		'title': 'Circle #' + i,
+		'summary': 'One circle',
+		'description': 'What color do i have?',
+		'size': i,
+
+	});
+}
+
+
 console.log(_catalog);
 /*cartItems array, later there will be sme objects stored here
 as name may suggest it will be cartItems simply
 */
-
+/*cartItems represents the items that a user has in the cart */
 var _cartItems = [];
+
+var myCircleItems = [];
 
 /*findIndex or find or both are es6 array method*/
 
@@ -54,6 +75,8 @@ const _removeItem = ( item ) => {
 	/*console.log("first remove console.log " + _cartItems );*/
 
 	/*nothing calls this method so until it is called there will be no console log*/
+	/*findIndex executes callback function on each element in the array until it returns true, then it return index
+	of that one element, if never callback gets true function findIndex returns -1*/
 
 	_cartItems.splice( _cartItems.findIndex( i => i === item), 1);
 };
@@ -121,7 +144,8 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 	getCartTotals() {
 		return _cartTotals();
 	},
-
+	/*action as a register parameter can be also called payload it 
+	is payload send to dispatcher when action happens*/
 	dispatcherIndex:register ( function ( action ) {
 		switch (action.actionType) {
 			case AppConstants.ADD_ITEM:
