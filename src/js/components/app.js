@@ -2,7 +2,6 @@ import React from 'react';
 import AppActions from '../actions/app-actions';
 import Catalog from './app-catalog';
 import Cart from './app-cart';
-import AppColoredElement from './app-colored-element';
 import CircleCatalog from './app-circle-catalog';
 
 export default class App extends React.Component {
@@ -11,7 +10,6 @@ export default class App extends React.Component {
 			<div className="container">
 				<Catalog />
 				<Cart />
-				<AppColoredElement />
 				<CircleCatalog />
 			</div>
 
@@ -19,7 +17,3 @@ export default class App extends React.Component {
 	}
 }
 
-
-/*
-<h1 onClick={AppActions.colorItem.bind(null, 'this is the item')}>Flux</h1>
-*/

@@ -3,7 +3,7 @@ import AppStore from '../stores/app-store';
 import CircleItem from './app-circleitem';
 import StoreWatchMixin from '../mixins/StoreWatchMixin';
 
-
+/*this function returns our catalog initial state*/
 function getCircleCatalog() {
 	return {items: AppStore.getCircleCatalog() }
 }
