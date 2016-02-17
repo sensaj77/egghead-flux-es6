@@ -1,7 +1,12 @@
 import React from 'react';
+import AppStore from '../stores/app-store';
+
+
 
 export default (props) => {
-
+	console.log(AppStore.getCatalog());
+	console.log(AppStore.getCart());
+	console.log(AppStore.getCartTotals());
 	return (
 		<div>
 				<h1>Colored element</h1>

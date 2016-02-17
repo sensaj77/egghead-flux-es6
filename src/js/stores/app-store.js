@@ -1,5 +1,7 @@
 import { dispatch, register } from '../dispatchers/app-dispatcher';
 import AppConstants from '../constants/app-constants';
+
+/*EVENT EMITTER IMPORTED FROM NODE (events)*/
 import { EventEmitter } from 'events';
 
 

@@ -2,7 +2,6 @@ import React from "react";
 import CartButton from './app-cart-button';
 import ColorButton from './app-color-button';
 import AppActions from '../actions/app-actions';
-import AppColoredElement from './app-colored-element';
 
 export default ( props ) => {
 	return(
