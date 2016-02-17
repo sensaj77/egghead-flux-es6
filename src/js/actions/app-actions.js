@@ -23,9 +23,9 @@ export default {
 		})
 	},
 	/*MY CUSTOM ACTION TO COLOR ELEMENT/Just trying*/
-	colorItem ( item ) {
+	addCircleItem ( item ) {
 		dispatch({
-			actionType: AppConstants.COLOR_ITEM, item
+			actionType: AppConstants.CIRCLE_ITEM, item
 		})
 	},
 

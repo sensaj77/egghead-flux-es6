@@ -3,6 +3,7 @@ import AppActions from '../actions/app-actions';
 import Catalog from './app-catalog';
 import Cart from './app-cart';
 import AppColoredElement from './app-colored-element';
+import CircleCatalog from './app-circle-catalog';
 
 export default class App extends React.Component {
 	render() {
@@ -11,6 +12,7 @@ export default class App extends React.Component {
 				<Catalog />
 				<Cart />
 				<AppColoredElement />
+				<CircleCatalog />
 			</div>
 
 			)

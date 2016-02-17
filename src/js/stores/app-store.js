@@ -43,7 +43,7 @@ for (let i = 1; i < 9; i++) {
 	});
 }
 
-for (let i = 1; i < 3; i++) {
+for (let i = 1; i < 4; i++) {
 	_myCatalog.push( {
 		'id': 'Circle' + i,
 		'title': 'Circle #' + i,
@@ -62,7 +62,7 @@ as name may suggest it will be cartItems simply
 /*cartItems represents the items that a user has in the cart */
 var _cartItems = [];
 
-var myCircleItems = [];
+var _myCircleItems = [];
 
 /*findIndex or find or both are es6 array method*/
 
@@ -138,6 +138,11 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 	getCatalog() {
 		return _catalog.map(item => {
 			return Object.assign( {}, item, _cartItems.find( cartItem => cartItem.id === item.id ))
+		})
+	},
+	getCircleCatalog() {
+		return _myCatalog.map(item => {
+			return Object.assign( {}, item, _myCircleItems.find( myCircleItem => myCircleItem.id === item.id ))
 		})
 	},
 

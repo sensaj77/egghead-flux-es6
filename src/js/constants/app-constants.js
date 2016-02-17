@@ -7,6 +7,6 @@ export default {
 
 
 	/*MY CUSTOM ACTION TO WORK WITH, LATER*/
-	COLOR_ITEM: 'COLOR_ITEM',
+	CIRCLE_ITEM: 'CIRCLE_ITEM',
 
 }
