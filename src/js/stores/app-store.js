@@ -117,6 +117,23 @@ const _cartTotals = (qty = 0, total = 0 ) => {
 	} );
 	return {qty , total};
 };
+/* REWRITE THIS FUNCTION BELOW
+const _findCartItem = ( item ) => {
+
+	return _cartItems.find( cartItem => cartItem.id === item.id );
+};
+*/
+const _findCircleItem = ( item ) => {
+
+	return _myCircleItems.find( cartItem => cartItem.id === item.id );
+};
+
+const _addCircleItem  = ( item ) => {
+	const circleItem = _findCircleItem ( item );
+	if (!circleItem ) {
+		_myCircleItems.push ( Object.assign ( { qty: 1}, item ) );
+	} else { _increaseItem ( circleItem) }
+}
 
 const AppStore = Object.assign(EventEmitter.prototype, { 
 
@@ -175,6 +192,10 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 				case AppConstants.DECREASE_ITEM:
 				_decreaseItem (action.item );
 				break;
+				case AppConstants.ADDCIRCLE_ITEM:
+				_addCircleItem (action.item );
+				break;
+
 
 
 

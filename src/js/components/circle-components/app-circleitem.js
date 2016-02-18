@@ -1,8 +1,8 @@
 /*here will be individual circle, its view (jsx and javascript) */
 
 import React from 'react';
-import AppActions from '../actions/app-actions';
-import CartButton from './app-cart-button';
+import AppActions from '../../actions/app-actions';
+import CartButton from '../cart-components/app-cart-button';
 
 
 var divStyleFirst = {
@@ -37,13 +37,13 @@ var divStyleThird = {
 export default (props) => {
 	return (
 		<div className="col-xs-6 col-sm-4 col-md-3">
-			<h4>{ props.item.title } </h4>
-			<h4> id: {props.item.id}  </h4>
-			<h4> key: {props.key}  </h4>
-			<h4> {props.item.description}  </h4>
+			<h4> item title: { props.item.title } </h4>
+			<h4> item id: {props.item.id}  </h4>
+			<h4> item key: {props.key}  </h4>
+			<h4> item description: {props.item.description}  </h4>
 			<div style={divStyleFirst}></div>
 			  
-			<CartButton handler={ AppActions.addItem.bind(null, props.item) } txt="Add colored circle" />
+			<CartButton handler={ AppActions.addCircleItem.bind(null, props.item) } txt="Add colored circle" />
 
 
 		</div>

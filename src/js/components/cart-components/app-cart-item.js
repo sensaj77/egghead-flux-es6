@@ -1,7 +1,7 @@
 import React from "react";
 import CartButton from './app-cart-button';
 import ColorButton from './app-color-button';
-import AppActions from '../actions/app-actions';
+import AppActions from '../../actions/app-actions';
 
 export default ( props ) => {
 	return(

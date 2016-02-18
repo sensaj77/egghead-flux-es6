@@ -1,7 +1,7 @@
 import React from 'react';
-import AppStore from '../stores/app-store';
+import AppStore from '../../stores/app-store';
 import AppTableItem from './app-circle-table-item';
-import StoreWatchMixin from '../mixins/StoreWatchMixin';
+import StoreWatchMixin from '../../mixins/StoreWatchMixin';
 
 const tableItems = () => {
 	return { items: AppStore.getTable() }
@@ -21,7 +21,7 @@ const CircleTable = ( props ) => {
 			total += subtotal;*/
 
 			return (
-				<AppCartItem
+				<AppTableItem
 				key={i}
 				item={item} />
 
