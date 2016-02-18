@@ -5,7 +5,14 @@ import AppActions from '../../actions/app-actions';
 import CartButton from '../cart-components/app-cart-button';
 
 
-var divStyleFirst = {
+
+
+
+/*"since our StoreWatchMixin keeps track of the state of our catalog component " */
+
+export default (props) => {
+  
+let divStyleFirst = {
   color: 'white',
   width: "150px",
   height: "150px",
@@ -13,7 +20,7 @@ var divStyleFirst = {
   backgroundColor: "red"
 
 };
-var divStyleSecond = {
+let divStyleSecond = {
   color: 'white',
   width: "150px",
   height: "150px",
@@ -21,7 +28,7 @@ var divStyleSecond = {
   backgroundColor: "brown"
 
 };
-var divStyleThird = {
+let divStyleThird = {
   color: 'white',
   width: "150px",
   height: "150px",
@@ -29,12 +36,6 @@ var divStyleThird = {
   backgroundColor: "yellow"
 
 };
-
-
-
-/*"since our StoreWatchMixin keeps track of the state of our catalog component " */
-
-export default (props) => {
 	return (
 		<div className="col-xs-6 col-sm-4 col-md-3">
 			<h4> item title: { props.item.title } </h4>

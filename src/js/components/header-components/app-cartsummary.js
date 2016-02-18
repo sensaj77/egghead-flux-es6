@@ -9,6 +9,9 @@ const CartSummary = ( props ) => {
 			<Link to="/cart" className="btn btn-success">
 				{`Cart Items: ${props.qty} / $${props.total } ` }
 			</Link>
+			<Link to="/circle-catalog" className="btn btn-success">
+				{`Circle Items ` }
+			</Link>
 		</div>
 		)
 }
