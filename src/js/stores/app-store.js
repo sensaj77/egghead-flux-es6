@@ -135,6 +135,13 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 	getCart() {
 		return _cartItems;
 	},
+
+	/*NOW HERE*/
+	getTable() {
+		return _myCircleItems;
+	},
+
+
 	getCatalog() {
 		return _catalog.map(item => {
 			return Object.assign( {}, item, _cartItems.find( cartItem => cartItem.id === item.id ))

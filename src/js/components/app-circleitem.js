@@ -38,8 +38,11 @@ export default (props) => {
 	return (
 		<div className="col-xs-6 col-sm-4 col-md-3">
 			<h4>{ props.item.title } </h4>
+			<h4> id: {props.item.id}  </h4>
+			<h4> key: {props.key}  </h4>
+			<h4> {props.item.description}  </h4>
 			<div style={divStyleFirst}></div>
-			 
+			  
 			<CartButton handler={ AppActions.addItem.bind(null, props.item) } txt="Add colored circle" />
 
 
