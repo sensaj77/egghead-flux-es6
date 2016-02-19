@@ -31,23 +31,11 @@ const CircleTable = ( props ) => {
 		return (
 			<div>
 				<h1>CircleItem</h1>
-				<table className="table table-hover">
-					<thead>
-						<tr>
-							<th>Colored Circle</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
+		
+					
 						{items}
-					</tbody>
-					<tfoot>
-						<tr>
-							<td colSpan="4" className="text-right">Total Size</td>
-							<td></td>
-						</tr>
-					</tfoot>
-				</table>
+					
+					
 			</div>
 
 			)

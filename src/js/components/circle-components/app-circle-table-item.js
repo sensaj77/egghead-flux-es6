@@ -15,9 +15,9 @@ let divStyleSecond = {
 export default ( props ) => {
 
 	return(
-						<tr>
-						<td style={divStyleSecond}></td>
-						</tr>
+						
+						<div style={divStyleSecond}></div>
+					
 						
 		
 

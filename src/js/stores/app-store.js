@@ -47,9 +47,7 @@ for (let i = 1; i < 4; i++) {
 	_myCatalog.push( {
 		'id': 'Circle' + i,
 		'title': 'Circle #' + i,
-		'summary': 'One circle',
 		'description': 'What color do i have?',
-		'size': i,
 
 	});
 }
@@ -130,9 +128,12 @@ const _findCircleItem = ( item ) => {
 
 const _addCircleItem  = ( item ) => {
 	const circleItem = _findCircleItem ( item );
-	if (!circleItem ) {
+	/*if (!circleItem ) {
 		_myCircleItems.push ( Object.assign ( { qty: 1}, item ) );
-	} else { _increaseItem ( circleItem) }
+	} else { _increaseItem ( circleItem) }*/
+	
+	_myCircleItems.push ( Object.assign ( { qty: 1}, item ) );
+	
 }
 
 const AppStore = Object.assign(EventEmitter.prototype, { 

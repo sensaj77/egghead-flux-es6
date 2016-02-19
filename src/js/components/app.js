@@ -7,7 +7,7 @@ import Template from './app-template';
 import CatalogDetail from './product-components/app-catalogdetail.js';
 import { Router, Route , IndexRoute } from 'react-router';
 
-export default () => {
+/*export default () => {
 	return (
 		<Router>
 			<Route path="/" component={Template} >
@@ -18,11 +18,11 @@ export default () => {
 			</Route>
 		</Router>
 		);
-}
+}*/
 //OLD VIEW
 
 
-/*export default class App extends React.Component {
+export default class App extends React.Component {
 	render() {
 		return (
 			<div className="container">
@@ -34,5 +34,5 @@ export default () => {
 
 			)
 	}
-}*/
+}
 
