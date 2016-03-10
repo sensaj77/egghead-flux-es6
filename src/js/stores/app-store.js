@@ -5,14 +5,19 @@ import AppConstants from '../constants/app-constants';
 import { EventEmitter } from 'events';
 
 
+var _kamilCatalog = {
+   "red": 4,
+   "blue": 1,
+   "orange": 18
+ };
+
+
 
 /*value = change will be broadcasted every time smth changes in our app
 */
 const CHANGE_EVENT = 'change';
 
 var _catalog = [];
-
-var _myCatalog = [];
 
 /*AHA! This loop will be trigerred maybe when npm start in console, this particular loop
 will create 9 objects, 9 widgets. They will be not seen until used somwhere else, when catalog will
@@ -43,14 +48,6 @@ for (let i = 1; i < 9; i++) {
 	});
 }
 
-for (let i = 1; i < 4; i++) {
-	_myCatalog.push( {
-		'id': 'Circle' + i,
-		'title': 'Circle #' + i,
-		'description': 'What color do i have?',
-
-	});
-}
 
 
 console.log(_catalog);
@@ -60,7 +57,6 @@ as name may suggest it will be cartItems simply
 /*cartItems represents the items that a user has in the cart */
 var _cartItems = [];
 
-var _myCircleItems = [];
 
 /*findIndex or find or both are es6 array method*/
 
@@ -121,20 +117,8 @@ const _findCartItem = ( item ) => {
 	return _cartItems.find( cartItem => cartItem.id === item.id );
 };
 */
-const _findCircleItem = ( item ) => {
 
-	return _myCircleItems.find( cartItem => cartItem.id === item.id );
-};
 
-const _addCircleItem  = ( item ) => {
-	const circleItem = _findCircleItem ( item );
-	/*if (!circleItem ) {
-		_myCircleItems.push ( Object.assign ( { qty: 1}, item ) );
-	} else { _increaseItem ( circleItem) }*/
-	
-	_myCircleItems.push ( Object.assign ( { qty: 1}, item ) );
-	
-}
 
 const AppStore = Object.assign(EventEmitter.prototype, { 
 
@@ -165,11 +149,7 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 			return Object.assign( {}, item, _cartItems.find( cartItem => cartItem.id === item.id ))
 		})
 	},
-	getCircleCatalog() {
-		return _myCatalog.map(item => {
-			return Object.assign( {}, item, _myCircleItems.find( myCircleItem => myCircleItem.id === item.id ))
-		})
-	},
+	
 
 	getCartTotals() {
 		return _cartTotals();
@@ -193,9 +173,7 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 				case AppConstants.DECREASE_ITEM:
 				_decreaseItem (action.item );
 				break;
-				case AppConstants.ADDCIRCLE_ITEM:
-				_addCircleItem (action.item );
-				break;
+				
 
 
 
