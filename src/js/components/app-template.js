@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from './header-components/app-header';
+import Navbar from './navbar-components/app-navbar';
 
 export default ( props ) => {
 	return (
 		<div className="container">
-			<Header></Header>
+			<Navbar></Navbar>
 			{props.children}
 		</div>
 		)
