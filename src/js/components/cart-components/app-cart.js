@@ -1,16 +1,15 @@
 import React from 'react';
-import StoreWatchMixin from '../../mixins/StoreWatchMixin';
 import { Link } from 'react-router';
 
 const cartItems = () => {
 	return 
 }
 
-const Cart = ( props ) => {
+const Settings = ( props ) => {
 	
 		return (
 			<div>
-				<h1>Cart component</h1>
+				<h1>Settings component</h1>
 			</div>
 
 			)
@@ -26,4 +25,4 @@ v
 export default ( InnerComponent, stateCallback)
 */
 
-export default StoreWatchMixin(Cart, cartItems) ;
+export default Settings;
