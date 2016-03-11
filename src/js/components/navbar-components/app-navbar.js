@@ -1,12 +1,11 @@
 import React from 'react';
-import CartSummary from './app-cartsummary';
 import { Link } from 'react-router';
 
 export default () => {
 	return (
 		<div className="row" >
 			<nav className=" light-blue">
-			    <div class="nav-wrapper">
+			    <div className="nav-wrapper">
 			      
 			      <ul id="nav-mobile" className="left hide-on-med-and-down ">
 			      	<li><Link to="/" >

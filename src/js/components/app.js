@@ -1,5 +1,5 @@
 import React from 'react';
-import Settings from './cart-components/settings.js';
+import Settings from './settings-components/settings.js';
 import Template from './app-template';
 import { Router, Route , IndexRoute } from 'react-router';
 
