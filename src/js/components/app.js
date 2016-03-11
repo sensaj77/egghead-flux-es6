@@ -1,5 +1,5 @@
 import React from 'react';
-import Cart from './cart-components/app-cart';
+import Settings from './cart-components/settings.js';
 import Template from './app-template';
 import { Router, Route , IndexRoute } from 'react-router';
 
@@ -8,7 +8,7 @@ export default () => {
 		<Router>
 			<Route path="/" component={Template} >
 				<IndexRoute  />
-				<Route path="cart" component= { Cart } />
+				<Route path="cart" component= { Settings } />
 			</Route>
 		</Router>
 		);
@@ -21,7 +21,7 @@ export default () => {
 		return (
 			<div className="container">
 				<Catalog />
-				<Cart />
+				<Settings />
 			</div>
 
 			)
