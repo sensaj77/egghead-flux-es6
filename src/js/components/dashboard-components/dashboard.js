@@ -17,7 +17,10 @@ const Dashboard = ( props ) => {
 			        </div>
 			        <div className="input-field col s3">
 			          <input id="icon_telephone" type="tel" className="validate" />
-			          <label htmlFor="icon_telephone">User</label>
+			          <label htmlFor="icon_telephone">Choose user</label>
+			        </div>
+			        <div className="input-field col s3">
+			          <input type="date" className="datepicker" />
 			        </div>
 			      </div>
 			    </form>
