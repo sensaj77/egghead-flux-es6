@@ -1,8 +1,17 @@
 import React from 'react';
 
 
-const Dashboard = ( props ) => {
-	
+export default class Dashboard extends React.Component  {
+	constructor(props) {
+    super(props)
+
+    this.state = {
+     /* products: this.props.products,
+      currentProducts: this.props.products*/
+    }
+
+  }
+	render() {
 		return (
 			<div className="row">
 				<form className="col s12">
@@ -29,8 +38,6 @@ const Dashboard = ( props ) => {
 		    </div>
 
 
-			)
-
+			);
+	}
 }
-
-export default Dashboard;
