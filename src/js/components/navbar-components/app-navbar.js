@@ -8,16 +8,18 @@ export default () => {
 			    <div className="nav-wrapper">
 			      
 			      <ul id="nav-mobile" className="left hide-on-med-and-down ">
-			      	<li><Link to="/" >
+			      	<li><Link to="dashboard" >
 						Propsy
 					</Link></li>
-			        <li><Link to="/" >
+			        <li><Link to="dashboard" >
 						Dashboard
 					</Link></li>
 			        <li><Link to="/cart" >
 						Settings
-					</Link></li>
-					<li>Log out</li>
+					</Link ></li>
+					<li><Link to="input-test" >
+						Log out
+					</Link ></li>
 			      </ul>
 			    </div>
 			 </nav>

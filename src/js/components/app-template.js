@@ -6,7 +6,6 @@ export default ( props ) => {
 	return (
 		<div className="container">
 			<Navbar></Navbar>
-			<Dashboard />
 			{props.children}
 		</div>
 		)
