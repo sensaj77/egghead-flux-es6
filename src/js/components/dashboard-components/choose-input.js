@@ -8,7 +8,9 @@ export default class SelectInput extends React.Component  {
      /* products: this.props.products,
       currentProducts: this.props.products*/
       inputValue: ""
-    }
+    };
+    
+    this.handleChange =this.handleChange.bind(this);
 
   }
   handleChange (event) {
@@ -27,7 +29,7 @@ export default class SelectInput extends React.Component  {
 				 <input
 			        type="text"
 			        value={this.state.inputValue}
-			        onChange={this.handleChange.bind(this)}
+			        onChange={this.handleChange}
 			      />
 		    </div>
 
