@@ -9,8 +9,8 @@ export default class SelectInput extends React.Component  {
       currentProducts: this.props.products*/
       inputValue: ""
     };
-    
-    this.handleChange =this.handleChange.bind(this);
+
+    this.handleChange = this.handleChange.bind(this);
 
   }
   handleChange (event) {
@@ -26,11 +26,8 @@ export default class SelectInput extends React.Component  {
 			<div>
  				
 				<h1>Some playground instead of log out for now</h1>
-				 <input
-			        type="text"
-			        value={this.state.inputValue}
-			        onChange={this.handleChange}
-			      />
+				 <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
+			     <input type="submit" />
 		    </div>
 
 
