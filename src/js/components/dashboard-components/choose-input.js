@@ -7,20 +7,28 @@ export default class SelectInput extends React.Component  {
     this.state = {
      /* products: this.props.products,
       currentProducts: this.props.products*/
+      inputValue: ""
     }
 
+  }
+  handleChange (event) {
+
+    this.setState({
+    	inputValue: event.target.value,
+    	
+    })
+    console.log(this.state.inputValue);
   }
 	render() {
 		return (
 			<div>
  				
 				<h1>Some playground instead of log out for now</h1>
-				<select>
-				  <option value="volvo">Volvo</option>
-				  <option value="saab">Saab</option>
-				  <option value="mercedes">Mercedes</option>
-				  <option value="audi">Audi</option>
-				</select>
+				 <input
+			        type="text"
+			        value={this.state.inputValue}
+			        onChange={this.handleChange.bind(this)}
+			      />
 		    </div>
 
 
