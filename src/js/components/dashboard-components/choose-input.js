@@ -56,20 +56,21 @@ export default class SelectInput extends React.Component  {
    /* console.log(selectedItem.index);
     console.log(selectedItem.selected);
     console.log(selectedItem.options[i]);*/
-    for (var i=0; i<actualData.length; i++){
-      if(selectedItem == actualData[i]) {
-        console.log(actualData[i]);
+
+    
+      if(selectedItem.selectedIndex !== -1) {
         
-        actualData.splice(0, 1);
+        actualData.splice(selectedItem.selectedIndex, 1);
+        console.log("something works after if");
       } else {
-        console.log("something works");
-        console.log(selectedItem);
-        console.log(actualData[i]);
+        console.log("something works after else");
         
       }
-    }
     
-
+    this.setState({
+      myData : actualData
+    })
+    console.log(actualData);
   }
 	render() {
 
