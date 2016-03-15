@@ -25,11 +25,13 @@ export default class SelectInput extends React.Component  {
   handleSubmit (event) {
   	event.preventDefault();
   	console.log(this.state.inputValue)
-    let selectOptions = [];
+    
 
   }
 	render() {
+    let selectOptions = ["Gorzkie żale", "Koronka do miłosierdzia", "Katecheza"];
 		return (
+
 			<div>
   			<h1>Some playground instead of log out for now</h1>
   			<form onSubmit={this.handleSubmit}>
