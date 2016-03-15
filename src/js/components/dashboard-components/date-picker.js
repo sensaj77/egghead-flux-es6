@@ -14,12 +14,8 @@ export default class DatePicker extends React.Component  {
 	render() {
 		return (
 			<div>
-				DaTe Picker Component
-					     
-					      
+				DaTe Picker Component   
 		    </div>
-
-
 			);
 	}
 }

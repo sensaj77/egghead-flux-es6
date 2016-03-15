@@ -25,19 +25,24 @@ export default class SelectInput extends React.Component  {
   handleSubmit (event) {
   	event.preventDefault();
   	console.log(this.state.inputValue)
+    let selectOptions = [];
+
   }
 	render() {
 		return (
 			<div>
- 				
-				<h1>Some playground instead of log out for now</h1>
-				<form onSubmit={this.handleSubmit}>
-				 <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
-			     <input type="submit" />
-			    </form>
-		    </div>
-
-
+  			<h1>Some playground instead of log out for now</h1>
+  			<form onSubmit={this.handleSubmit}>
+  				 <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
+  			     <input type="submit" />
+  			</form>
+        <h3>Select element underneath</h3>
+        <select defaultValue="B">
+          <option value="A">Apple</option>
+          <option value="B">Banana</option>
+          <option value="C">Cranberry</option>
+        </select>
+		  </div>
 			);
 	}
 }
