@@ -1,4 +1,5 @@
 import React from 'react';
+import AppButton from '../button-components/app-button.js';
 
 
 var data = [
@@ -54,12 +55,13 @@ export default class SelectInput extends React.Component  {
   			<h1>Some playground instead of log out for now</h1>
   			<form onSubmit={this.handleSubmit}>
   				 <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
-  			     <input type="submit" />
+  			     <input className="waves-effect waves-light btn" type="submit" />
   			</form>
         <h3>Select element underneath</h3>
         <select >
          {selectOptionsJSX}
         </select>
+        <AppButton />
 		  </div>
 			);
 	}
