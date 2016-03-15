@@ -14,7 +14,7 @@ export default class Button extends React.Component  {
 	render() {
 		return (
 			<div>
-				<a className="waves-effect waves-light btn red">Remove</a>   
+				<a className="waves-effect waves-light btn red" onClick={this.props.handleRemove}>Remove</a>   
 		    </div>
 			);
 	}

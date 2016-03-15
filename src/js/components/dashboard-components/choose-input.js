@@ -21,6 +21,7 @@ export default class SelectInput extends React.Component  {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
 
   }
   handleChange (event) {
@@ -40,10 +41,16 @@ export default class SelectInput extends React.Component  {
     })
   }
   handleRemove ( event ) {
-    
+    /*var selectobject=document.getElementById("select-dropdown");*/
+
+    /*for (var i=0; i<selectobject.length; i++){
+      if (selectobject.options[i].value == i )
+         selectobject.remove(i);
+    }*/
+    console.log("remove");
+
   }
 	render() {
-    
 
     var selectOptionsJSX = this.state.myData.map(function ( item, index ) {
 
@@ -56,13 +63,13 @@ export default class SelectInput extends React.Component  {
   			<h1>Some playground instead of log out for now</h1>
   			<form onSubmit={this.handleSubmit}>
   				 <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
-  			     <input className="waves-effect waves-light btn" type="submit" />
+  			   <input className="waves-effect waves-light btn" type="submit" />
   			</form>
         <h3>Select element underneath</h3>
-        <select >
+        <select id="select-dropdown">
          {selectOptionsJSX}
         </select>
-        <AppButton />
+        <AppButton handleRemove={this.handleRemove}/>
 		  </div>
 			);
 	}
