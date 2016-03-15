@@ -48,13 +48,14 @@ export default class SelectInput extends React.Component  {
          selectobject.remove(i);
     }*/
     console.log("remove");
+    console.log(this.refs.dropdown.value);
 
   }
 	render() {
 
     var selectOptionsJSX = this.state.myData.map(function ( item, index ) {
 
-      return <option key={index} value={index}>{item.planned}</option>
+      return <option key={index} value={item.planned}>{item.planned}</option>
     });
     
 		return (
@@ -66,7 +67,7 @@ export default class SelectInput extends React.Component  {
   			   <input className="waves-effect waves-light btn" type="submit" />
   			</form>
         <h3>Select element underneath</h3>
-        <select id="select-dropdown">
+        <select ref="dropdown">
          {selectOptionsJSX}
         </select>
         <AppButton handleRemove={this.handleRemove}/>
