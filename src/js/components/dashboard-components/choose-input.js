@@ -28,11 +28,15 @@ export default class SelectInput extends React.Component  {
     	inputValue: event.target.value,
     	
     })
-    console.log(this.state.inputValue);
   }
   handleSubmit (event) {
   	event.preventDefault();
-  	console.log(this.state.inputValue)
+  	console.log(this.state.inputValue);
+    data.push({planned:this.state.inputValue});
+    console.log(data);
+    this.setState({
+      myData : data
+    })
     
 
   }
@@ -40,7 +44,7 @@ export default class SelectInput extends React.Component  {
     
 
     var selectOptionsJSX = this.state.myData.map(function ( item, index ) {
-      console.log(index);
+
       return <option key={index} value={index}>{item.planned}</option>
     });
     
