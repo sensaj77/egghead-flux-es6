@@ -41,21 +41,41 @@ export default class SelectInput extends React.Component  {
     })
   }
   handleRemove ( event ) {
-    /*var selectobject=document.getElementById("select-dropdown");*/
 
-    /*for (var i=0; i<selectobject.length; i++){
-      if (selectobject.options[i].value == i )
-         selectobject.remove(i);
+    /*for (var i=0; i<actualData.length; i++){
+
+      if (selectedItem.options[i].value == i )
+         selectedItem.remove(i);
     }*/
+
     console.log("remove");
-    console.log(this.refs.dropdown.value);
+    var actualData = this.state.myData;
+    var selectedItem = this.refs.dropdown;
+    var selectedValue = this.refs.dropdown.value;
+    console.log(selectedValue);
+   /* console.log(selectedItem.index);
+    console.log(selectedItem.selected);
+    console.log(selectedItem.options[i]);*/
+    for (var i=0; i<actualData.length; i++){
+      if(selectedItem == actualData[i]) {
+        console.log(actualData[i]);
+        
+        actualData.splice(0, 1);
+      } else {
+        console.log("something works");
+        console.log(selectedItem);
+        console.log(actualData[i]);
+        
+      }
+    }
+    
 
   }
 	render() {
 
     var selectOptionsJSX = this.state.myData.map(function ( item, index ) {
 
-      return <option key={index} value={item.planned}>{item.planned}</option>
+      return <option key={index} value={index}>{item.planned}</option>
     });
     
 		return (
