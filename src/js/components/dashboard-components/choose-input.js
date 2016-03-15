@@ -1,5 +1,12 @@
 import React from 'react';
 
+
+var data = [
+      { planned: "Gorzkie żale", id: 1 },
+      { planned: "Koronka do miłosierdzia", id: 2 },
+      { planned: "Katecheza", id: 3 }
+    ];
+
 export default class SelectInput extends React.Component  {
 	constructor(props) {
     super(props)
@@ -7,7 +14,8 @@ export default class SelectInput extends React.Component  {
     this.state = {
      /* products: this.props.products,
       currentProducts: this.props.products*/
-      inputValue: ""
+      inputValue: "",
+      myData: data
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -29,7 +37,12 @@ export default class SelectInput extends React.Component  {
 
   }
 	render() {
-    let selectOptions = ["Gorzkie żale", "Koronka do miłosierdzia", "Katecheza"];
+    
+
+    var selectOptionsJSX = this.state.myData.map(function ( item ) {
+      return <option key={item.id} value={item.id}>{item.planned}</option>
+    });
+    
 		return (
 
 			<div>
@@ -39,10 +52,8 @@ export default class SelectInput extends React.Component  {
   			     <input type="submit" />
   			</form>
         <h3>Select element underneath</h3>
-        <select defaultValue="B">
-          <option value="A">Apple</option>
-          <option value="B">Banana</option>
-          <option value="C">Cranberry</option>
+        <select >
+         {selectOptionsJSX}
         </select>
 		  </div>
 			);
