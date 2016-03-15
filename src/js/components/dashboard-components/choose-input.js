@@ -2,9 +2,9 @@ import React from 'react';
 
 
 var data = [
-      { planned: "Gorzkie żale", id: 1 },
-      { planned: "Koronka do miłosierdzia", id: 2 },
-      { planned: "Katecheza", id: 3 }
+      { planned: "Gorzkie żale" },
+      { planned: "Koronka do miłosierdzia" },
+      { planned: "Katecheza" }
     ];
 
 export default class SelectInput extends React.Component  {
@@ -39,8 +39,9 @@ export default class SelectInput extends React.Component  {
 	render() {
     
 
-    var selectOptionsJSX = this.state.myData.map(function ( item ) {
-      return <option key={item.id} value={item.id}>{item.planned}</option>
+    var selectOptionsJSX = this.state.myData.map(function ( item, index ) {
+      console.log(index);
+      return <option key={index} value={index}>{item.planned}</option>
     });
     
 		return (
