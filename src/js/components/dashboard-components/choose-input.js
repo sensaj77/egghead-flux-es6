@@ -38,8 +38,9 @@ export default class SelectInput extends React.Component  {
     this.setState({
       myData : data
     })
+  }
+  handleRemove ( event ) {
     
-
   }
 	render() {
     
