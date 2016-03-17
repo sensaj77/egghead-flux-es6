@@ -1,5 +1,7 @@
 import React from 'react';
 import AppButton from '../button-components/app-button.js';
+import AppActions from '../../actions/app-actions';
+import AppStore from '../../stores/app-store';
 
 
 var data = [
@@ -7,6 +9,10 @@ var data = [
       { planned: "Koronka do miłosierdzia" },
       { planned: "Katecheza" }
     ];
+
+const getLogData = () => {
+  return { myItems: AppStore.getDefaultOptions()}
+}
 
 export default class SelectInput extends React.Component  {
 	constructor(props) {
@@ -16,13 +22,24 @@ export default class SelectInput extends React.Component  {
      /* products: this.props.products,
       currentProducts: this.props.products*/
       inputValue: "",
-      myData: data
+      myData: data,
+      storedData: getLogData()
     };
-
+  
+    this._onChange = this._onChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
 
+  }
+  _onChange () {
+    this.setState( data )
+  }
+  componentWillMount(){
+    AppStore.addChangeListener( this._onChange )
+  }
+  componentWillUnmount () {
+    AppStore.removeChangeListener ( this._onChange )
   }
   handleChange (event) {
 
@@ -32,37 +49,23 @@ export default class SelectInput extends React.Component  {
     })
   }
   handleSubmit (event) {
+    console.log(this.state.storedData);
   	event.preventDefault();
-  	console.log(this.state.inputValue);
     data.push({planned:this.state.inputValue});
-    console.log(data);
     this.setState({
       myData : data
     })
   }
   handleRemove ( event ) {
 
-    /*for (var i=0; i<actualData.length; i++){
-
-      if (selectedItem.options[i].value == i )
-         selectedItem.remove(i);
-    }*/
-
     console.log("remove");
     var actualData = this.state.myData;
     var selectedItem = this.refs.dropdown;
-    var selectedValue = this.refs.dropdown.value;
-    console.log(selectedValue);
-   /* console.log(selectedItem.index);
-    console.log(selectedItem.selected);
-    console.log(selectedItem.options[i]);*/
-
-    
       if(selectedItem.selectedIndex !== -1) {
         
         actualData.splice(selectedItem.selectedIndex, 1);
-        console.log("something works after if");
       } else {
+
         console.log("something works after else");
         
       }
@@ -70,7 +73,7 @@ export default class SelectInput extends React.Component  {
     this.setState({
       myData : actualData
     })
-    console.log(actualData);
+
   }
 	render() {
 
@@ -82,16 +85,16 @@ export default class SelectInput extends React.Component  {
 		return (
 
 			<div>
-  			<h1>Some playground instead of log out for now</h1>
+  			<h1 onClick={AppActions.addItem.bind(null, "this is event/ item")}>Some playground instead of log out for now</h1>
   			<form onSubmit={this.handleSubmit}>
   				 <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
   			   <input className="waves-effect waves-light btn" type="submit" />
   			</form>
-        <h3>Select element underneath</h3>
+        <h3 onClick={AppStore.logActualOptions}>Select element underneath</h3>
         <select ref="dropdown">
          {selectOptionsJSX}
         </select>
-        <AppButton handleRemove={this.handleRemove}/>
+        <AppButton handler={AppActions.removeItem} />
 		  </div>
 			);
 	}
