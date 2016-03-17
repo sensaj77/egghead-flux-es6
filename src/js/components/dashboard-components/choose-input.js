@@ -49,7 +49,8 @@ export default class SelectInput extends React.Component  {
     })
   }
   handleSubmit (event) {
-    console.log(this.state.storedData);
+    console.log(this.state.myData.myItems);
+    console.log(this.state.myData);
   	event.preventDefault();
     data.push({planned:this.state.inputValue});
     this.setState({
