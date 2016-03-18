@@ -17,7 +17,7 @@ export default class SelectInput extends React.Component  {
      /* products: this.props.products,
       currentProducts: this.props.products*/
       inputValue: "",
-      myData: getLogData()
+      myData: getLogData().myItems
     };
   
     this._onChange = this._onChange.bind(this);
@@ -44,7 +44,6 @@ export default class SelectInput extends React.Component  {
   }
   handleSubmit (event) {
     console.log(this.state.myData);
-    console.log(this.state.storedData.myItems);
   	event.preventDefault();
     myData.push({planned:this.state.inputValue});
     this.setState({
@@ -71,8 +70,9 @@ export default class SelectInput extends React.Component  {
 
   }
 	render() {
+
     console.log(this.state.myData);
-    var myDataJSX = this.state.myData.myItems;
+    var myDataJSX = this.state.myData;
     console.log(myDataJSX);
     var selectOptionsJSX = myDataJSX.map(function ( item, index ) {
 

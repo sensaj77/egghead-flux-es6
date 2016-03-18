@@ -17,6 +17,7 @@ var logData = [
  var removeItem = function( item ) {
 
     console.log("remove");
+    console.log(item);
 /*    console.log(EventEmitter);
     console.log({EventEmitter});
     console.log(dispatch);
