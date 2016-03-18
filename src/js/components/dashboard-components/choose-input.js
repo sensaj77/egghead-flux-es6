@@ -27,7 +27,7 @@ export default class SelectInput extends React.Component  {
 
   }
   _onChange () {
-    this.setState( myData )
+    this.setState( this.state.myData )
   }
   componentWillMount(){
     AppStore.addChangeListener( this._onChange )

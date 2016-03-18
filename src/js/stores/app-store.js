@@ -17,6 +17,10 @@ var logData = [
  var removeItem = function( item ) {
 
     console.log("remove");
+/*    console.log(EventEmitter);
+    console.log({EventEmitter});
+    console.log(dispatch);
+    console.log(register);*/
    /* var actualData = myData;*/
 
      /* if(item.selectedIndex !== -1) {
