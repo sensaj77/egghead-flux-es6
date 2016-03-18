@@ -4,11 +4,6 @@ import AppActions from '../../actions/app-actions';
 import AppStore from '../../stores/app-store';
 
 
-var data = [
-      { planned: "Gorzkie żale" },
-      { planned: "Koronka do miłosierdzia" },
-      { planned: "Katecheza" }
-    ];
 
 const getLogData = () => {
   return { myItems: AppStore.getDefaultOptions()}
@@ -22,8 +17,7 @@ export default class SelectInput extends React.Component  {
      /* products: this.props.products,
       currentProducts: this.props.products*/
       inputValue: "",
-      myData: data,
-      storedData: getLogData()
+      myData: getLogData()
     };
   
     this._onChange = this._onChange.bind(this);
@@ -33,7 +27,7 @@ export default class SelectInput extends React.Component  {
 
   }
   _onChange () {
-    this.setState( data )
+    this.setState( myData )
   }
   componentWillMount(){
     AppStore.addChangeListener( this._onChange )
@@ -49,12 +43,12 @@ export default class SelectInput extends React.Component  {
     })
   }
   handleSubmit (event) {
-    console.log(this.state.myData.myItems);
     console.log(this.state.myData);
+    console.log(this.state.storedData.myItems);
   	event.preventDefault();
-    data.push({planned:this.state.inputValue});
+    myData.push({planned:this.state.inputValue});
     this.setState({
-      myData : data
+      myData : myData
     })
   }
   handleRemove ( event ) {
@@ -77,8 +71,10 @@ export default class SelectInput extends React.Component  {
 
   }
 	render() {
-
-    var selectOptionsJSX = this.state.myData.map(function ( item, index ) {
+    console.log(this.state.myData);
+    var myDataJSX = this.state.myData.myItems;
+    console.log(myDataJSX);
+    var selectOptionsJSX = myDataJSX.map(function ( item, index ) {
 
       return <option key={index} value={index}>{item.planned}</option>
     });
