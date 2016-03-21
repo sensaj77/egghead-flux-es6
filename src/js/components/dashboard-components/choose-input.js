@@ -9,6 +9,10 @@ const getLogData = () => {
   return { myItems: AppStore.getDefaultOptions()}
 }
 
+const getNewLogData = () => {
+  return { newItems: AppStore.getNewLogData() }
+}
+
 export default class SelectInput extends React.Component  {
 	constructor(props) {
     super(props)
@@ -17,13 +21,14 @@ export default class SelectInput extends React.Component  {
      /* products: this.props.products,
       currentProducts: this.props.products*/
       inputValue: "",
-      myData: getLogData().myItems
+      myData: getLogData().myItems,
+      newData: getNewLogData.newItems
     };
   
     this._onChange = this._onChange.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);/*
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);*/
 
   }
   _onChange () {
@@ -42,15 +47,43 @@ export default class SelectInput extends React.Component  {
     	
     })
   }
-  handleSubmit (event) {
+  
+	render() {
+    var myDataJSX = this.state.myData;
+    var selectOptionsJSX = myDataJSX.map(function ( item, index ) {
+
+      return <option key={index} value={index}>{item.planned}</option>
+    });
+		return (
+
+			<div>
+  			<h1 onClick={AppActions.addItem}>Some playground instead of log out for now</h1>
+  			<form onSubmit={AppActions.addItem}>
+  				 <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
+  			   <input className="waves-effect waves-light btn" type="submit" />
+  			</form>
+        <h3>Select element underneath</h3>
+        <select ref="dropdown">
+         {selectOptionsJSX}
+        </select>
+        <AppButton handler={AppActions.removeItem} />
+		  </div>
+			);
+	}
+}
+
+
+
+/*handleSubmit (event) {
     console.log(this.state.myData);
-  	event.preventDefault();
-    myData.push({planned:this.state.inputValue});
+    event.preventDefault();
+    this.state.myData.push({planned:this.state.inputValue});
     this.setState({
-      myData : myData
+      myData : this.state.myData
     })
-  }
-  handleRemove ( event ) {
+    console.log(this.state.myData);
+  }*/
+  /*handleRemove ( event ) {
 
     console.log("remove");
     var actualData = this.state.myData;
@@ -68,31 +101,4 @@ export default class SelectInput extends React.Component  {
       myData : actualData
     })
 
-  }
-	render() {
-
-    console.log(this.state.myData);
-    var myDataJSX = this.state.myData;
-    console.log(myDataJSX);
-    var selectOptionsJSX = myDataJSX.map(function ( item, index ) {
-
-      return <option key={index} value={index}>{item.planned}</option>
-    });
-    
-		return (
-
-			<div>
-  			<h1 onClick={AppActions.addItem.bind(null, "this is event/ item")}>Some playground instead of log out for now</h1>
-  			<form onSubmit={this.handleSubmit}>
-  				 <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
-  			   <input className="waves-effect waves-light btn" type="submit" />
-  			</form>
-        <h3 onClick={AppStore.logActualOptions}>Select element underneath</h3>
-        <select ref="dropdown">
-         {selectOptionsJSX}
-        </select>
-        <AppButton handler={AppActions.removeItem} />
-		  </div>
-			);
-	}
-}
+  }*/

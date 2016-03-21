@@ -13,32 +13,22 @@ var logData = [
       { planned: "Spacer z Karoliną" },
       { planned: "Frytki z Karoliną" }
     ];
+var newLogData = [];
 
- var removeItem = function( item ) {
+const removeItem = ( item ) => {
 
     console.log("remove");
     console.log(item);
-/*    console.log(EventEmitter);
-    console.log({EventEmitter});
-    console.log(dispatch);
-    console.log(register);*/
-   /* var actualData = myData;*/
 
-     /* if(item.selectedIndex !== -1) {
-        
-        actualData.splice(item.selectedIndex, 1);
-      } else {
 
-        console.log("something works after else");
-        
-      }*/
-    
-/*    this.setState({
-      myData : actualData
-    })*/
+  };
 
-  }
-
+  const addItem =  ( item ) => {
+  	console.log("hello");
+  	console.log(logData);
+  	/*newLogData.push(Object.assign( item ));*/
+	};
+  
 const AppStore = Object.assign(EventEmitter.prototype, { 
 
 	emitChange(){
@@ -56,10 +46,12 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 	getDefaultOptions() {
 		return logData;
 	},
-	logActualOptions() {
-		console.log(logData);
+	
+	getNewLogData () {
+		/*console.log(addItem());*/
+		return newLogData;
 	},
-
+	
 	/*action as a register parameter can be also called payload it 
 	is payload send to dispatcher when action happens*/
 	dispatcherIndex:register ( function ( action ) {
@@ -68,6 +60,9 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 
 				case AppConstants.REMOVE_ITEM:
 				removeItem ( action.item );
+				break;
+				case AppConstants.ADD_ITEM:
+				addItem ( action.item );
 				break;
 
 		}
