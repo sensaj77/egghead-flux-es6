@@ -9,8 +9,8 @@ const getLogData = () => {
   return { myItems: AppStore.getDefaultOptions()}
 }
 
-const getNewLogData = () => {
-  return { newItems: AppStore.getNewLogData() }
+const getStoreTodos = () => {
+  return { storeTodos: getAllTodoItems() }
 }
 
 export default class SelectInput extends React.Component  {
@@ -21,8 +21,7 @@ export default class SelectInput extends React.Component  {
      /* products: this.props.products,
       currentProducts: this.props.products*/
       inputValue: "",
-      myData: getLogData().myItems,
-      newData: getNewLogData.newItems
+      myData: getLogData().myItems
     };
   
     this._onChange = this._onChange.bind(this);
@@ -57,8 +56,8 @@ export default class SelectInput extends React.Component  {
 		return (
 
 			<div>
-  			<h1 onClick={AppActions.addItem}>Some playground instead of log out for now</h1>
-  			<form onSubmit={AppActions.addItem}>
+  			<h1>Some playground instead of log out for now</h1>
+  			<form onSubmit={AppActions.addTodo}>
   				 <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
   			   <input className="waves-effect waves-light btn" type="submit" />
   			</form>
@@ -66,7 +65,7 @@ export default class SelectInput extends React.Component  {
         <select ref="dropdown">
          {selectOptionsJSX}
         </select>
-        <AppButton handler={AppActions.removeItem} />
+        <AppButton handler={AppActions.destroyTodo} />
 		  </div>
 			);
 	}

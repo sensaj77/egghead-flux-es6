@@ -15,6 +15,25 @@ var logData = [
     ];
 var newLogData = [];
 
+var _todos = {};
+
+/*Create todo item*/
+
+const createTodo = ( text ) => {
+	var todoId = Date.now();
+	_todos[id] = {
+		id: id,
+		complete: false,
+		text: text
+	};
+}
+/*Delete TODO item*/
+
+const destroyTodo = ( id ) => {
+	delete _todos[id];
+}
+
+
 const removeItem = ( item ) => {
 
     console.log("remove");
@@ -22,11 +41,11 @@ const removeItem = ( item ) => {
 
 
   };
+  /*React.findDOMNode(this.refs.itemName)*/
 
   const addItem =  ( item ) => {
-  	console.log("hello");
-  	console.log(logData);
-  	/*newLogData.push(Object.assign( item ));*/
+  	console.log("adding item ");
+
 	};
   
 const AppStore = Object.assign(EventEmitter.prototype, { 
@@ -46,16 +65,23 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 	getDefaultOptions() {
 		return logData;
 	},
-	
-	getNewLogData () {
-		/*console.log(addItem());*/
-		return newLogData;
+	getAllTodoItems () {
+		return _todos;
 	},
 	
 	/*action as a register parameter can be also called payload it 
 	is payload send to dispatcher when action happens*/
 	dispatcherIndex:register ( function ( action ) {
 		switch (action.actionType) {
+				case AppConstants.TODO_CREATE:
+				text = action.text.trim();
+				if(text !== '') {
+					create(text);
+				}
+				break;
+				case AppConstants.TODO_DESTROY:
+				destroy(action.id);
+				break;
 			
 
 				case AppConstants.REMOVE_ITEM:
