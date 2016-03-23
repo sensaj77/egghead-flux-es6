@@ -68,6 +68,15 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 	getAllTodoItems () {
 		return _todos;
 	},
+
+	areAllComplete() {
+		for (var id in _todos){
+			if(!_todos[id].complete) {
+				return false;
+			}
+		}
+		return true;
+	},
 	
 	/*action as a register parameter can be also called payload it 
 	is payload send to dispatcher when action happens*/

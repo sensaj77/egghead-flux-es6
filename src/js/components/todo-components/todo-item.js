@@ -23,10 +23,10 @@ export default class TodoItem extends React.Component  {
 		   	isEditing : false
 	    };
 
-	    this.state._onToggleComplete = this.state._onToggleComplete.bind(this);
-	    this.state._onDoubleClick =this.state._onDoubleClick.bind(this);
-	    this.state._onDestroyClick = this.state._onDestroyClick.bind(this);
-	    this.state._onSave = this.state._onSave.bind(this);
+	    this._onToggleComplete = this._onToggleComplete.bind(this);
+	    this._onDoubleClick =this._onDoubleClick.bind(this);
+	    this._onDestroyClick = this._onDestroyClick.bind(this);
+	    this._onSave = this._onSave.bind(this);
 	}
 	_onToggleComplete() {
 		AppActions.toggleComplete(this.props.todo);

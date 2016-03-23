@@ -6,7 +6,7 @@ import AppStore from '../../stores/app-store';
 
 const getTodoState () {
 	return {
-		allTodos: AppStore.getAll(),
+		allTodos: AppStore.getAllTodoItems(),
 		areAllComplete: AppStore.areAllComplete()
 	};
 }

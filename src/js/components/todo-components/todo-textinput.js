@@ -39,8 +39,8 @@ export default class TodoTextInput extends React.Component  {
 					id={this.props.id}
 					placeholder={this.props.placeholder}
 					onBlur={this._save}
-					onChange={this.state._onChange}
-					onKeyDown={this.state._onKeyDown}
+					onChange={this._onChange}
+					onKeyDown={this._onKeyDown}
 					value={this.state.value}
 					autoFocus={true}
 				/>
