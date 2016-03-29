@@ -22,6 +22,7 @@ export default class SelectedOptionList extends React.Component  {
   }
 	render() {
 		var selectedOptions = this.state.selectedTasks;
+		console.log("selected options array from store ", selectedOptions);
 	    var selectedOptionsToMapJSX = selectedOptions.map(function ( item, index ) {
 	      return <li key={index}>{item.text}</li>
 	    });
