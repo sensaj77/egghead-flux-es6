@@ -7,13 +7,38 @@ import { EventEmitter } from 'events';
 
 const CHANGE_EVENT = 'change';
 
-
-var logData = [
-      { planned: "Wino z Karoliną" },
-      { planned: "Spacer z Karoliną" },
-      { planned: "Frytki z Karoliną" }
-    ];
-var newLogData = [];
+var relationshipTasks = [
+	 {
+    id: 1,
+    complete: false,
+    text: "Wino z Karoliną"
+  },
+   {
+    id: 2,
+    complete: false,
+    text: "Kino z Karoliną"
+  },
+   {
+    id: 3,
+    complete: false,
+    text: "Spacer z Karoliną"
+  },
+  {
+    id: 4,
+    complete: false,
+    text: "Frytki z Karoliną"
+  },
+  {
+    id: 5,
+    complete: false,
+    text: "Bieganie z Karoliną"
+  },
+  {
+    id: 6,
+    complete: false,
+    text: "Film z Karoliną"
+  }
+];
 
 var _todos = {};
 
@@ -62,8 +87,8 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 	removeChangeListener( callback ) {
 		this.removeListener ( CHANGE_EVENT, callback )
 	},
-	getDefaultOptions() {
-		return logData;
+	defaultRelationshipTasks() {
+		return relationshipTasks;
 	},
 	getAllTodoItems () {
 		return _todos;

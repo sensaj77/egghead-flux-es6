@@ -4,13 +4,8 @@ import AppActions from '../../actions/app-actions';
 import AppStore from '../../stores/app-store';
 
 
-
-const getLogData = () => {
-  return { myItems: AppStore.getDefaultOptions()}
-}
-
-const getStoreTodos = () => {
-  return { storeTodos: getAllTodoItems() }
+const getDefaultRelationshipTasks = () => {
+  return { relationshipTasks: AppStore.defaultRelationshipTasks()}
 }
 
 export default class SelectInput extends React.Component  {
@@ -21,7 +16,7 @@ export default class SelectInput extends React.Component  {
      /* products: this.props.products,
       currentProducts: this.props.products*/
       inputValue: "",
-      myData: getLogData().myItems
+      stateRelationshipTasks: getDefaultRelationshipTasks().relationshipTasks
     };
   
     this._onChange = this._onChange.bind(this);
@@ -48,10 +43,10 @@ export default class SelectInput extends React.Component  {
   }
   
 	render() {
-    var myDataJSX = this.state.myData;
-    var selectOptionsJSX = myDataJSX.map(function ( item, index ) {
-
-      return <option key={index} value={index}>{item.planned}</option>
+    
+    var stateRelationshipTasksJSX = this.state.stateRelationshipTasks;
+    var selectRelationshipTaskJSX = stateRelationshipTasksJSX.map(function ( item, index ) {
+      return <option key={index} value={index}>{item.text}</option>
     });
 		return (
 
@@ -63,7 +58,7 @@ export default class SelectInput extends React.Component  {
   			</form>
         <h3>Select element underneath</h3>
         <select ref="dropdown">
-         {selectOptionsJSX}
+         {selectRelationshipTaskJSX}
         </select>
         <AppButton handler={AppActions.destroyTodo} />
 		  </div>
