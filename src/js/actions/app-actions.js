@@ -12,18 +12,7 @@ export default {
 		dispatch({
 			actionType: AppConstants.ADD_ITEM, item
 		})
-	},
-	addTodo ( text ) {
-		dispatch({
-			actionType: AppConstants.TODO_CREATE,
-			text: text
-		})
-	},
-	destroyTodo ( id ) {
-		dispatch ({
-			actionType: AppConstants.TODO_DESTROY,
-			id: id
-		})
 	}
+	
 
 }

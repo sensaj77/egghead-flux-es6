@@ -40,7 +40,7 @@ var relationshipTasks = [
   }
 ];
 
-var _todos = {};
+var _selectedTasks = [];
 
 /*Create todo item*/
 
@@ -70,6 +70,8 @@ const removeItem = ( item ) => {
 
   const addItem =  ( item ) => {
   	console.log("adding item ");
+  	_selectedTasks.push( item );
+  	console.log(_selectedTasks);
 
 	};
   
@@ -90,34 +92,13 @@ const AppStore = Object.assign(EventEmitter.prototype, {
 	defaultRelationshipTasks() {
 		return relationshipTasks;
 	},
-	getAllTodoItems () {
-		return _todos;
+	selectedTasks() {
+		return _selectedTasks;
 	},
-
-	areAllComplete() {
-		for (var id in _todos){
-			if(!_todos[id].complete) {
-				return false;
-			}
-		}
-		return true;
-	},
-	
 	/*action as a register parameter can be also called payload it 
 	is payload send to dispatcher when action happens*/
 	dispatcherIndex:register ( function ( action ) {
 		switch (action.actionType) {
-				case AppConstants.TODO_CREATE:
-				text = action.text.trim();
-				if(text !== '') {
-					create(text);
-				}
-				break;
-				case AppConstants.TODO_DESTROY:
-				destroy(action.id);
-				break;
-			
-
 				case AppConstants.REMOVE_ITEM:
 				removeItem ( action.item );
 				break;

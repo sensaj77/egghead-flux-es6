@@ -5,7 +5,10 @@ import AppStore from '../../stores/app-store';
 
 
 const getDefaultRelationshipTasks = () => {
-  return { relationshipTasks: AppStore.defaultRelationshipTasks()}
+  return { relationshipTasks: AppStore.defaultRelationshipTasks() }
+}
+const getSelectedTasks = () => {
+  return { selectedRelationshipTasks: AppStore.selectedTasks() }
 }
 
 export default class SelectInput extends React.Component  {
@@ -13,20 +16,17 @@ export default class SelectInput extends React.Component  {
     super(props)
 
     this.state = {
-     /* products: this.props.products,
-      currentProducts: this.props.products*/
-      inputValue: "",
-      stateRelationshipTasks: getDefaultRelationshipTasks().relationshipTasks
+
+      stateRelationshipTasks: getDefaultRelationshipTasks().relationshipTasks,
+      selectedTasks: getSelectedTasks().selectedRelationshipTasks,
+      selectedTasksToMap: []
     };
   
     this._onChange = this._onChange.bind(this);
-    this.handleChange = this.handleChange.bind(this);/*
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);*/
-
+    this.handleSelecting = this.handleSelecting.bind(this);
   }
   _onChange () {
-    this.setState( this.state.myData )
+    this.setState( this.state.selectedTasksToMap )
   }
   componentWillMount(){
     AppStore.addChangeListener( this._onChange )
@@ -34,38 +34,40 @@ export default class SelectInput extends React.Component  {
   componentWillUnmount () {
     AppStore.removeChangeListener ( this._onChange )
   }
-  handleChange (event) {
-
+  handleSelecting(  ) {
+    var actualSelected = this.refs.dropdown;
+    AppActions.addItem ( actualSelected.value );
     this.setState({
-    	inputValue: event.target.value,
-    	
+      selectedTasksToMap : getSelectedTasks().selectedRelationshipTasks
     })
+    console.log("hello", this.state.selectedTasksToMap);
   }
   
 	render() {
-    
-    var stateRelationshipTasksJSX = this.state.stateRelationshipTasks;
-    var selectRelationshipTaskJSX = stateRelationshipTasksJSX.map(function ( item, index ) {
-      return <option key={index} value={index}>{item.text}</option>
+    var stateRelationshipTasksToMap = this.state.stateRelationshipTasks;
+    var selectListRelationshipTasksJSX = stateRelationshipTasksToMap.map(function ( item, index ) {
+      return <option key={index} value={item.text}>{item.text}</option>
+    });
+
+    var selectedOptions = this.state.selectedTasksToMap;
+    var selectedOptionsToMapJSX = selectedOptions.map(function ( item, index ) {
+      return <li key={index}>{item.text}</li>
     });
 		return (
 
 			<div>
-  			<h1>Some playground instead of log out for now</h1>
-  			<form onSubmit={AppActions.addTodo}>
-  				 <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
-  			   <input className="waves-effect waves-light btn" type="submit" />
-  			</form>
         <h3>Select element underneath</h3>
-        <select ref="dropdown">
-         {selectRelationshipTaskJSX}
+        <select ref="dropdown" name="selectList" >
+         {selectListRelationshipTasksJSX}
         </select>
-        <AppButton handler={AppActions.destroyTodo} />
+        <AppButton handler={this.handleSelecting} />
+        <ul>
+          {selectedOptionsToMapJSX}
+        </ul>
 		  </div>
 			);
 	}
 }
-
 
 
 /*handleSubmit (event) {
@@ -76,8 +78,8 @@ export default class SelectInput extends React.Component  {
       myData : this.state.myData
     })
     console.log(this.state.myData);
-  }*/
-  /*handleRemove ( event ) {
+  }
+  handleRemove ( event ) {
 
     console.log("remove");
     var actualData = this.state.myData;
@@ -95,4 +97,19 @@ export default class SelectInput extends React.Component  {
       myData : actualData
     })
 
-  }*/
+  }
+
+  <form onSubmit={AppActions.addTodo}>
+           <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
+           <input className="waves-effect waves-light btn" type="submit" />
+        </form>
+
+
+handleChange (event) {
+
+    this.setState({
+      inputValue: event.target.value,
+      
+    })
+  }
+      */
