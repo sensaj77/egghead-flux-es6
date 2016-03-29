@@ -2,6 +2,7 @@ import React from 'react';
 import AppButton from '../button-components/app-button.js';
 import AppActions from '../../actions/app-actions';
 import AppStore from '../../stores/app-store';
+import SelectedOptionList from './selected-options-list';
 
 
 const getDefaultRelationshipTasks = () => {
@@ -18,15 +19,15 @@ export default class SelectInput extends React.Component  {
     this.state = {
 
       stateRelationshipTasks: getDefaultRelationshipTasks().relationshipTasks,
+
       selectedTasks: getSelectedTasks().selectedRelationshipTasks,
-      selectedTasksToMap: []
     };
   
     this._onChange = this._onChange.bind(this);
     this.handleSelecting = this.handleSelecting.bind(this);
   }
   _onChange () {
-    this.setState( this.state.selectedTasksToMap )
+    this.setState( this.state.selectedTasks )
   }
   componentWillMount(){
     AppStore.addChangeListener( this._onChange )
@@ -38,20 +39,15 @@ export default class SelectInput extends React.Component  {
     var actualSelected = this.refs.dropdown;
     AppActions.addItem ( actualSelected.value );
     this.setState({
-      selectedTasksToMap : getSelectedTasks().selectedRelationshipTasks
+      selectedTasks : getSelectedTasks().selectedRelationshipTasks
     })
-    console.log("hello", this.state.selectedTasksToMap);
+    console.log("hello", this.state.selectedTasks);
   }
-  
+
 	render() {
     var stateRelationshipTasksToMap = this.state.stateRelationshipTasks;
     var selectListRelationshipTasksJSX = stateRelationshipTasksToMap.map(function ( item, index ) {
       return <option key={index} value={item.text}>{item.text}</option>
-    });
-
-    var selectedOptions = this.state.selectedTasksToMap;
-    var selectedOptionsToMapJSX = selectedOptions.map(function ( item, index ) {
-      return <li key={index}>{item.text}</li>
     });
 		return (
 
@@ -61,9 +57,7 @@ export default class SelectInput extends React.Component  {
          {selectListRelationshipTasksJSX}
         </select>
         <AppButton handler={this.handleSelecting} />
-        <ul>
-          {selectedOptionsToMapJSX}
-        </ul>
+        <SelectedOptionList selectedTasks={this.state.selectedTasks} />
 		  </div>
 			);
 	}
