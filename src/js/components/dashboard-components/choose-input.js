@@ -43,6 +43,9 @@ export default class SelectInput extends React.Component  {
     })
     console.log("hello", this.state.selectedTasks);
   }
+  renderSelected( text ){
+    console.log(text);
+  }
 
 	render() {
     var stateRelationshipTasksToMap = this.state.stateRelationshipTasks;
@@ -56,7 +59,8 @@ export default class SelectInput extends React.Component  {
         <select ref="dropdown" name="selectList" >
          {selectListRelationshipTasksJSX}
         </select>
-        <AppButton handler={this.handleSelecting} />
+        <AppButton handler={this.handleSelecting} buttonName="Select" />
+        <AppButton handler={this.renderSelected} buttonName="Render" />
         <SelectedOptionList selectedTasks={this.state.selectedTasks} />
 		  </div>
 			);
