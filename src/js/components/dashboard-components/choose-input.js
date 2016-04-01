@@ -43,6 +43,8 @@ export default class SelectInput extends React.Component  {
     })
     console.log("hello", this.state.selectedTasks);
   }
+
+  /*button with this handler, that when clicked will render selected items to the view*/
   renderSelected( text ){
     console.log(text);
   }
