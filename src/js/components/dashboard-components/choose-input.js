@@ -62,7 +62,7 @@ export default class SelectInput extends React.Component  {
          {selectListRelationshipTasksJSX}
         </select>
         <AppButton handler={this.handleSelecting} buttonName="Select" />
-        <AppButton handler={this.renderSelected} buttonName="Render" />
+        <AppButton handler={this.renderSelected} buttonName="Render Selected" />
         <SelectedOptionList selectedTasks={this.state.selectedTasks} />
 		  </div>
 			);
